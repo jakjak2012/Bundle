@@ -24,8 +24,8 @@ class Transaction:
         user_data = {
           **dict,
           'id' : dict['users.id'],
-          'created_at' : dict['created_at'],
-          'updated_at' : dict['updated_at']
+          'created_at' : dict['users.created_at'],
+          'updated_at' : dict['users.updated_at']
         }
         users = User(user_data)
         transaction.user = users
@@ -36,7 +36,7 @@ class Transaction:
     # Insert transactions to DB
     @classmethod
     def insert_transaction(cls, data):
-      query = "INSERT INTO transactions(amount, category, comment, created_at, updated_at, user_id) VALUES (%(amount)s, %(category)s, %(comment)s, %(date)s, NOW(), NOW(), %(user_id)s);"
+      query = "INSERT INTO transactions(amount, category, comment, date, created_at, updated_at, user_id) VALUES (%(amount)s, %(category)s, %(comment)s, %(date)s, NOW(), NOW(), %(user_id)s);"
       results = connectToMySQL('Bundle').query_db(query, data)
       return results
     
