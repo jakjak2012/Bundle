@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Transaction</title>
+</head>
+    
+<body>
+    <!-- should submit all form data into "insert transaction" route and run function in route -->
+    <form action="/insert_transaction" method="POST">
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="amount">
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+            <option value="transportation">Transportation</option>
+            <option value="groceries">Groceries</option>
+            <option value="clothing">Clothing</option>
+            <option value="doctor">Doctor</option>
+            <option value="cosmetics">Cosmetics</option>
+            <option value="housing">Housing</option>
+            <option value="internet">Internet</option>
+            <option value="phone">Phone</option>
+            <option value="subscriptions">Subscriptions</option>
+        </select>
+        <label for="comment">Comment:</label>
+        <textarea name="comment" id="comment" rows="3"></textarea>
+        <label for="date">Date:</label>
+        <input type="date" name="date">
+        <input type="submit" name="add" id="add" value="Add Transaction">
+    </form>
+</body>
+
+</html>
