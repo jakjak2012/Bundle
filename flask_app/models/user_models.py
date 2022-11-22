@@ -1,15 +1,10 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
-from flask_bcrypt import bcrypt
-from flask_app import EMAIL_REGEX
+# from flask_bcrypt import Bcrypt
 from flask_app.controllers.users_controller import bcrypt
 
-
-
-
-from flask_app.models.transaction_models import Transaction
-
-
+import re
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 class User:
     def __init__(self, data):
         self.id = data['id']

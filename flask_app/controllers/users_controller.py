@@ -5,8 +5,6 @@ bcrypt = Bcrypt(app)
 from flask_app.models.user_models import User
 
 
-
-
 #home page
 @app.route('/')
 def index():
