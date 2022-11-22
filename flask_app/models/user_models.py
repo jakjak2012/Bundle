@@ -7,6 +7,9 @@ from flask_app.controllers.user_controller import bcrypt
 
 
 
+from flask_app.models.transaction_models import Transaction
+
+
 class User:
     def __init__(self, data):
         self.id = data['id']
@@ -88,3 +91,4 @@ class User:
 
         if not is_valid:
             flash("Invalid Login.")
+
