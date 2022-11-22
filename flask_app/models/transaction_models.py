@@ -48,4 +48,46 @@ class Transaction:
       query = "DELETE FROM transactions WHERE id = %(id)s"
       results = connectToMySQL('Bundle').query_db(query, data)
       return results
+    
+    
+    
+    # Collecting the total amount from date range
+    @classmethod
+    def total_transactions(cls, data):
+      query = "SELECT sum(amount) as amount, date FROM transactions where user_id = %(id)s and date BETWEEN %(date)s AND %(date)s"
+      results = connectToMySQL('Bundle').query_db(query, data)
+      totals = []
+      for dict in results:
+        total = cls(dict)
+        total_data = {
+          **dict,
+          'id' : ['users.id'],
+          'created_at' : ['users.created_at'],
+          'updated_at' : ['users.updated_at']
+        }
+        users = User(total_data)
+        total.user = users
+        totals.append(total)
+      return totals
       
+      
+      
+    # Selecting information based on category
+    @classmethod
+    def get_category(cls, data):
+      query = "SELECT * FROM transactions JOIN users on users.id = user_id WHERE users.id = %(id)s AND category = %(category)s;"
+      results = connectToMySQL('Bundle').query_db(query,data)
+      categories = []
+      for dict in results:
+        category = cls(dict)
+        total_category = {
+          **dict,
+          'id' : dict['users.id'],
+          'created_at' : ['users.created_at'],
+          'updated_at' : ['users.updated_at']
+        }
+        users = User(total_category)
+        category.user = users
+        categories.append(category)
+      return categories
+        
