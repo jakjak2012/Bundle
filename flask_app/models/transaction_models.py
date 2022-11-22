@@ -12,6 +12,7 @@ class Transaction:
     self.updated_at = data['updated_at']
     self.user_id = data['user_id']
     
+
     
     # Fetching all transactions from DB
     @classmethod
@@ -90,4 +91,3 @@ class Transaction:
         category.user = users
         categories.append(category)
       return categories
-        
