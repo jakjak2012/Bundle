@@ -24,6 +24,36 @@
     <!-- should submit all form data into "insert transaction" route and run function in route -->
 
     <div class="container">
+        <form action="/insert_budget" method="POST">
+            <h1>Add Budgeted Amount</h1>
+            <label for="amount">Amount:</label>
+            <input type="text" id="amount" name="amount">
+            
+            <label for="category">Category:</label>
+
+            
+                <select name="category" id="category">
+                    <option value="transportation">Transportation</option>
+                    <option value="groceries">Groceries</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="cosmetics">Cosmetics</option>
+                    <option value="housing">Housing</option>
+                    <option value="internet">Internet</option>
+                    <option value="phone">Phone</option>
+                    <option value="subscriptions">Subscriptions</option>
+                    <option value="miscellaneous">Miscellaneous</option>
+                </select>
+
+            <label for="comment">Comment:</label>
+            <textarea name="comment" id="comment" rows="4"></textarea>
+
+            <label for="date">Date:</label>
+            <input type="date" name="date">
+
+            <!-- <input type="submit" name="add" id="add" value="Add Transaction"> -->
+            <button type="submit">Add Budget</button>
+        </form>
         <form action="/insert_transaction" method="POST">
             <h1>Add a New Transaction</h1>
             <label for="amount">Amount:</label>
