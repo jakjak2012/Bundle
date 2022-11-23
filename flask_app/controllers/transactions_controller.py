@@ -65,6 +65,9 @@ def insert_transaction():
   if 'uid' not in session:
     return redirect('/')
   
+  if not Transaction.validate_transactions(request.form):
+    return redirect(request.referrer)
+  
   data = {
     **request.form,
     'user_id': session['uid']

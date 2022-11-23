@@ -17,6 +17,9 @@ def insert_budget():
   if 'uid' not in session:
     return redirect('/')
   
+  if not Budget.validate_budget(request.form):
+    return redirect(request.referrer)
+
   data = {
     **request.form,
     'user_id': session['uid']

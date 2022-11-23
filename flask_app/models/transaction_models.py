@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models.user_models import User
+from flask import flash
 
 class Transaction:
   def __init__(self, data):
@@ -103,3 +104,21 @@ class Transaction:
       category.user = users
       categories.append(category)
     return categories
+
+  @staticmethod
+  def validate_transactions(data):
+    is_valid = True
+
+    if len(data['amount']) < 1:
+      flash('Enter Transaction Amount', 'transaction')
+      is_valid = False
+
+    if data['category'] == 'null':
+      flash('Please Select A Category', 'transaction')
+      is_valid = False
+
+    if len(data['date']) < 8:
+      flash('Please Select A Date', 'transaction')
+      is_valid = False
+    
+    return is_valid
