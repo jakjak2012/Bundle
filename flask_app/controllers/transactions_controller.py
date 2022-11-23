@@ -16,7 +16,19 @@ def dashboard():
   user = User.get_one_by_id(data)
   transactions = Transaction.get_transaction(data)
   budget = Budget.display_budget(data)
-  return render_template('dashboard.html', user = user, transactions = transactions, budget = budget)
+  
+  #  For Testing purposes(can be moved elsewhere)
+  # code for deducting amount from transactions 
+  trans = Transaction.deduct_total(data)
+  rem_budget = Budget.grab_budget_amount(data)
+  total_Budget = rem_budget['budget_amt'] - trans[0]['amount']
+  
+  # an if statement if needed for displaying messages to the user??
+  
+  return render_template('dashboard.html', user = user, transactions = transactions, budget = budget, total_Budget = total_Budget)
+
+
+
 
 #insert transaction data into database
 @app.route('/insert_transaction', methods = ['POST'])
@@ -31,6 +43,8 @@ def insert_transaction():
   Transaction.insert_transaction(data)
   return redirect('/dashboard')
 
+
+
 #used to delete a transaction from the database
 @app.route('/delete_transaction/<int:num>')
 def delete_transaction(num):
@@ -43,6 +57,8 @@ def delete_transaction(num):
   Transaction.delete_transaction(data)
   return redirect('/dashboard')
 
+
+
 # used to check if the user selected a category to sort by
 @app.route('/sort_by_category', methods = ['POST'])
 def sort_by_category():
@@ -53,6 +69,9 @@ def sort_by_category():
   if session['category'] == '':
     return redirect(request.referrer)
   return redirect('/sortted')
+
+
+
 
 # displays sorted data by selected category
 @app.route('/sortted')

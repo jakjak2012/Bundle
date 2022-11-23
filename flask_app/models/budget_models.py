@@ -21,6 +21,18 @@ class Budget:
     return results[0]
   
   
+  
+#  Selecting budget based on user_id
+# got this code to work for deducting the budget, feel free to make changes if needed
+  @classmethod
+  def grab_budget_amount(cls,data):
+    query = "SELECT budget_amt FROM budget JOIN users on users.id = user_id WHERE users.id = %(id)s;"
+    results = connectToMySQL('Bundle').query_db(query,data)
+    return results[0]
+  
+  
+  
+  
   # Inserting Budget from the user Input
   @classmethod
   def insert_budget(cls,data):

@@ -73,6 +73,16 @@ class Transaction:
     
     
     
+    
+  # grabbing the total amount from transactions to deduct from budget 
+  @classmethod
+  def deduct_total(cls, data):
+    query = "SELECT sum(amount) as amount FROM transactions WHERE user_id = %(id)s;"
+    results = connectToMySQL('Bundle').query_db(query,data)
+    return results
+    
+    
+    
   # Selecting information based on category
   @classmethod
   def get_category(cls, data):
