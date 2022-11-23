@@ -40,6 +40,84 @@ class Budget:
     results = connectToMySQL('Bundle').query_db(query, data)
     return results
 
+#getting budgets by the specific categories 
+  @classmethod
+  def get_budget_by_Transportation(cls, data):
+    query = 'SELECT budget_amt, budget_cat FROM budget JOIN users on users.id = user_id WHERE users.id = %(id)s AND budget_cat = "transportation";'
+    results = connectToMySQL('Bundle').query_db(query, data)
+    if len(results) < 1:
+      return False
+    return results[0]
 
-    
+  @classmethod
+  def get_budget_by_Groceries(cls, data):
+    query = 'SELECT budget_amt, budget_cat FROM budget JOIN users on users.id = user_id WHERE users.id = %(id)s AND budget_cat = "groceries";'
+    results = connectToMySQL('Bundle').query_db(query, data)
+    if len(results) < 1:
+      return False
+    return results[0]
+
+  @classmethod
+  def get_budget_by_Clothing(cls, data):
+    query = 'SELECT budget_amt, budget_cat FROM budget JOIN users on users.id = user_id WHERE users.id = %(id)s AND budget_cat = "clothing";'
+    results = connectToMySQL('Bundle').query_db(query, data)
+    if len(results) < 1:
+      return False
+    return results[0]
+
+  @classmethod
+  def get_budget_by_Doctor(cls, data):
+    query = 'SELECT budget_amt, budget_cat FROM budget JOIN users on users.id = user_id WHERE users.id = %(id)s AND budget_cat = "doctor";'
+    results = connectToMySQL('Bundle').query_db(query, data)
+    if len(results) < 1:
+      return False
+    return results[0]
+
+  @classmethod
+  def get_budget_by_Cosmetics(cls, data):
+    query = 'SELECT budget_amt, budget_cat FROM budget JOIN users on users.id = user_id WHERE users.id = %(id)s AND budget_cat = "cosmetics";'
+    results = connectToMySQL('Bundle').query_db(query, data)
+    if len(results) < 1:
+      return False
+    return results[0]
+
+  @classmethod
+  def get_budget_by_Housing(cls, data):
+    query = 'SELECT budget_amt, budget_cat FROM budget JOIN users on users.id = user_id WHERE users.id = %(id)s AND budget_cat = "housing";'
+    results = connectToMySQL('Bundle').query_db(query, data)
+    if len(results) < 1:
+      return False
+    return results[0]
+
+  @classmethod
+  def get_budget_by_Internet(cls, data):
+    query = 'SELECT budget_amt, budget_cat FROM budget JOIN users on users.id = user_id WHERE users.id = %(id)s AND budget_cat = "internet";'
+    results = connectToMySQL('Bundle').query_db(query, data)
+    if len(results) < 1:
+      return False
+    return results[0]
+
+  @classmethod
+  def get_budget_by_Phone(cls, data):
+    query = 'SELECT budget_amt, budget_cat FROM budget JOIN users on users.id = user_id WHERE users.id = %(id)s AND budget_cat = "phone";'
+    results = connectToMySQL('Bundle').query_db(query, data)
+    if len(results) < 1:
+      return False
+    return results[0]
+
+  @classmethod
+  def get_budget_by_Subscriptions(cls, data):
+    query = 'SELECT budget_amt, budget_cat FROM budget JOIN users on users.id = user_id WHERE users.id = %(id)s AND budget_cat = "subscriptions";'
+    results = connectToMySQL('Bundle').query_db(query, data)
+    if len(results) < 1:
+      return False
+    return results[0]
+
+  @classmethod
+  def get_budget_by_Miscellaneous(cls, data):
+    query = 'SELECT budget_amt, budget_cat FROM budget JOIN users on users.id = user_id WHERE users.id = %(id)s AND budget_cat = "miscellaneous";'
+    results = connectToMySQL('Bundle').query_db(query, data)
+    if len(results) < 1:
+      return False
+    return results[0]
 

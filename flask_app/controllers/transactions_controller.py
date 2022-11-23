@@ -24,6 +24,8 @@ def dashboard():
   total_Budget = rem_budget['budget_amt'] - trans[0]['amount']
   
   # an if statement if needed for displaying messages to the user??
+
+  
   
   return render_template('dashboard.html', user = user, transactions = transactions, budget = budget, total_Budget = total_Budget)
 
