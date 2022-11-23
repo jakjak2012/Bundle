@@ -21,16 +21,40 @@ def dashboard():
   # code for deducting amount from transactions 
   trans = Transaction.deduct_total(data)
   rem_budget = Budget.grab_budget_amount(data)
+  print(trans)
+  print(rem_budget)
+  if not trans:
+    trans = 0
   if not rem_budget: 
-    total_Budget = 0
-  if rem_budget: 
+    rem_budget = 0
+  print(trans)
+  print(rem_budget)
+  if rem_budget != 0 and trans != 0: 
     total_Budget = rem_budget['budget_amt'] - trans[0]['amount']
+  if rem_budget != 0 and trans == 0:
+    total_Budget = rem_budget['budget_amt'] - trans
+  if rem_budget == 0 and trans != 0:
+    total_Budget = rem_budget - trans[0]['amount']
+  if rem_budget == 0 and trans == 0:
+    total_Budget = rem_budget - trans
   
   # an if statement if needed for displaying messages to the user??
 
+  table_data = {
+    #data for the various budgets the user creates
+    'transportation_budget': Budget.get_budget_by_Transportation(data),
+    'groceries_budget': Budget.get_budget_by_Groceries(data),
+    'clothing_budget': Budget.get_budget_by_Clothing(data),
+    'doctor_budget': Budget.get_budget_by_Doctor(data),
+    'cosmetics_budget': Budget.get_budget_by_Cosmetics(data),
+    'housing_budget': Budget.get_budget_by_Housing(data),
+    'internet_budget': Budget.get_budget_by_Internet(data),
+    'phone_budget': Budget.get_budget_by_Phone(data),
+    'subscriptions_budget': Budget.get_budget_by_Subscriptions(data),
+    'miscellaneous_budget': Budget.get_budget_by_Miscellaneous(data),
+  }
   
-  
-  return render_template('dashboard.html', user = user, transactions = transactions, budget = budget, total_Budget = total_Budget)
+  return render_template('dashboard.html', user = user, transactions = transactions, budget = budget, total_Budget = total_Budget, table_data = table_data)
 
 
 
