@@ -18,6 +18,13 @@
             <div class="signin-signup">
                 <form action="/login" method="POST" class="sign-in-form">
                     <h2 class="title">Log In</h2>
+                    {% with messages = get_flashed_messages(category_filter = 'login') %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <p style="color:red">{{message}}</p>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
                     <div class="input-field">
                         <input type="text" name="username" placeholder="Username">
                     </div>
@@ -31,6 +38,13 @@
             <div class="signup-signup">
                 <form action="/register" method="POST" class="sign-up-form">
                     <h2 class="title">Register</h2>
+                    {% with messages = get_flashed_messages(category_filter = 'register') %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <p style="color:red">{{message}}</p>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
                     <div class="input-field">
                         <input type="text" name="first_name" placeholder="First Name">
                     </div>
