@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models.user_models import User
+from flask import flash
 
 class Budget:
   def __init__(self, data):
@@ -40,7 +41,7 @@ class Budget:
   # Inserting Budget from the user Input
   @classmethod
   def insert_budget(cls,data):
-    query = 'INSERT INTO budget(budget_amt, budget_cat, created_at, updated_at, user_id) VALUES (%(budget_amt)s, %(budget_cat)s, %(created_at)s, %(updated_at)s, %(user_id)s)'
+    query = 'INSERT INTO budget(budget_amt, budget_cat, created_at, updated_at, user_id) VALUES (%(budget_amt)s, %(budget_cat)s, NOW(), NOW(), %(user_id)s)'
     results = connectToMySQL('Bundle').query_db(query, data)
     return results
 
@@ -125,3 +126,16 @@ class Budget:
       return False
     return results[0]
 
+  @staticmethod
+  def validate_budget(data):
+    is_valid = True
+
+    if len(data['budget_amt']) < 1:
+      flash('Enter Budget Amount', 'budget')
+      is_valid = False
+
+    if data['budget_cat'] == 'null':
+      flash('Please Select Category', 'budget')
+      is_valid = False
+    
+    return is_valid
