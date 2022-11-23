@@ -15,10 +15,10 @@ class Budget:
   # displaying budget on the page
 
   @classmethod
-  def display_budget(cls):
+  def display_budget(cls, data):
     query = 'SELECT budget_amt FROM budget WHERE user_id = %(id)s'
-    results = connectToMySQL('Bundle').query_db(query)
-    return results
+    results = connectToMySQL('Bundle').query_db(query, data)
+    return results[0]
   
   
   # Inserting Budget from the user Input

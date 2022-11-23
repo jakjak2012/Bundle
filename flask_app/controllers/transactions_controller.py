@@ -15,7 +15,8 @@ def dashboard():
   }
   user = User.get_one_by_id(data)
   transactions = Transaction.get_transaction(data)
-  return render_template('dashboard.html', user = user, transactions = transactions)
+  budget = Budget.display_budget(data)
+  return render_template('dashboard.html', user = user, transactions = transactions, budget = budget)
 
 #insert transaction data into database
 @app.route('/insert_transaction', methods = ['POST'])
