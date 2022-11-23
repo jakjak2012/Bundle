@@ -53,6 +53,13 @@
 
             <!-- <input type="submit" name="add" id="add" value="Add Transaction"> -->
             <button type="submit">Add Budget</button>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p style="color:red">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
         </form>
         <form action="/insert_transaction" method="POST">
             <h1>Add a New Transaction</h1>
