@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color:white;
+    font-size: large;
+    background-color:#0e2a47;
+}
+
+nav > h1 {
+    font-family: 'Racing Sans One';
+    font-size: 3em;
+    color:#2a9d8f;
+}
+
+nav {
+    background-color: #2b2d42;
+    padding: 10px 20px;
+    width:max-content;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position:fixed;
+    top:0;
+}
+
+a{
+    color:#2a9d8f;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+a:hover{
+    color:white;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    display: block;
+}
+
+.links a:hover {
+    color:#2a9d8f;
+}
+
+.container {
+    width:50%;
+    margin: 10% auto;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+}
+
+input{
+    padding:10px;
+    width:100%
+}
