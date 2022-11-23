@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models.user_models import User
+from flask import flash
 
 class Transaction:
   def __init__(self, data):
@@ -79,6 +80,8 @@ class Transaction:
   def deduct_total(cls, data):
     query = "SELECT sum(amount) as amount FROM transactions WHERE user_id = %(id)s;"
     results = connectToMySQL('Bundle').query_db(query,data)
+    if results[0]['amount'] == None: 
+      return False
     return results
     
     
@@ -101,6 +104,7 @@ class Transaction:
       category.user = users
       categories.append(category)
     return categories
+
 
 
 
@@ -197,3 +201,26 @@ class Transaction:
       if len(results) < 1:
           return False
       return results[0]
+      
+      
+      
+# Validation for transactions      
+
+  @staticmethod
+  def validate_transactions(data):
+    is_valid = True
+
+    if len(data['amount']) < 1:
+      flash('Enter Transaction Amount', 'transaction')
+      is_valid = False
+
+    if data['category'] == 'null':
+      flash('Please Select A Category', 'transaction')
+      is_valid = False
+
+    if len(data['date']) < 8:
+      flash('Please Select A Date', 'transaction')
+      is_valid = False
+    
+    return is_valid
+

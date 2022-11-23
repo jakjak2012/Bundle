@@ -5,17 +5,37 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Roboto:wght@300&family=Urbanist:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/dashboard.css">
+  <title>Bundle</title>
 </head>
 
 <body>
-  <h1>Hey, You're logged in</h1>
+  <nav>
+      <h1>Bundle</h1>
+      <div class="links">
+          <a href="/dashboard">Dashboard</a>
+          <a href="/input">Transactions</a>
+      </div>
+      <div class="user">
+          <h2>username</h2>
+          <a href="/logout">Logout</a>
+      </div>
+  </nav>
+
+  <div class="welcome">
+    <h1>Welcome back, user</h1>
+  </div>
+
+<div class="container">
   <h2>Budget:</h2>
   <p>{{ budget.budget_amt }}</p>
+
   <!-- division for income section -->
+
   <div>
-    <p>Paycheck 1</p>
-    <p>Paycheck 2</p>
+    <p>Paycheck 1:</p>
+    <p>Paycheck 2:</p>
   </div>
   <div>
     <table>
@@ -29,7 +49,7 @@
       <tbody>
         <tr>
           <td>Transportation</td>
-          <td>budgetted</td>
+          <td>{{ table_data.transportation_budget }}</td>
           <td>spent</td>
         </tr>
         <tr>
@@ -80,6 +100,8 @@
       </tbody>
     </table>
   </div>
+
+</div>
 </body>
 
 </html>
