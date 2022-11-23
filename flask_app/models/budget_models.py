@@ -11,7 +11,9 @@ class Budget:
     self.user_id = data['user_id']
     
     
+
   # displaying budget on the page
+
   @classmethod
   def display_budget(cls):
     query = 'SELECT budget_amt FROM budget WHERE user_id = %(id)s'
@@ -25,4 +27,7 @@ class Budget:
     query = 'INSERT INTO budget(budget_amt, budget_cat, created_at, updated_at, user_id) VALUES (%(budget_amt)s, %(budget_cat)s, %(created_at)s, %(updated_at)s, %(user_id)s)'
     results = connectToMySQL('Bundle').query_db(query, data)
     return results
+
+
     
+
