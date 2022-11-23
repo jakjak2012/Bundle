@@ -18,6 +18,8 @@ class Budget:
   def display_budget(cls, data):
     query = 'SELECT budget_amt FROM budget WHERE user_id = %(id)s'
     results = connectToMySQL('Bundle').query_db(query, data)
+    if len(results) < 1:
+      return False
     return results[0]
   
   
@@ -28,6 +30,8 @@ class Budget:
   def grab_budget_amount(cls,data):
     query = "SELECT budget_amt FROM budget JOIN users on users.id = user_id WHERE users.id = %(id)s;"
     results = connectToMySQL('Bundle').query_db(query,data)
+    if len(results) < 1:
+      return False
     return results[0]
   
   

@@ -21,7 +21,10 @@ def dashboard():
   # code for deducting amount from transactions 
   trans = Transaction.deduct_total(data)
   rem_budget = Budget.grab_budget_amount(data)
-  total_Budget = rem_budget['budget_amt'] - trans[0]['amount']
+  if not rem_budget: 
+    total_Budget = 0
+  if rem_budget: 
+    total_Budget = rem_budget['budget_amt'] - trans[0]['amount']
   
   # an if statement if needed for displaying messages to the user??
   
