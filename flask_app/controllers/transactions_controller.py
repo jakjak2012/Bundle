@@ -8,7 +8,7 @@ from flask_app.models.budget_models import Budget
 @app.route('/dashboard')
 def dashboard():
   if 'uid' not in session:
-    return render_template('/')
+    return redirect('/')
   
   data = {
     'id': session['uid']

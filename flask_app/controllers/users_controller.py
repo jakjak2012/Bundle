@@ -20,9 +20,8 @@ def sign_in():
 def login():
     if not User.validate_login(request.form):
         return redirect('/sign_in')
-    found_user = User.get_one_by_email(request.form)
+    found_user = User.get_one_by_username(request.form)
     session["uid"] = found_user.id
-    session["user_name"] = found_user.first_name
     
     return redirect('/dashboard')
 
@@ -38,7 +37,6 @@ def register():
     if not User.validate_user(request.form):
         return redirect('/sign_in')
     hash = bcrypt.generate_password_hash(request.form['password'])
-    print(hash)
 
     data = {
         **request.form

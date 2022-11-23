@@ -19,7 +19,7 @@ class User:
 # adding user to the database 
     @classmethod
     def create(cls, data):
-        query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s, NOW(), NOW());"
+        query = "INSERT INTO users (first_name, last_name, username, email, password, created_at, updated_at) VALUES (%(first_name)s, %(last_name)s, %(username)s, %(email)s, %(password)s, NOW(), NOW());"
         return connectToMySQL("Bundle").query_db(query,data)
 
 # getting user information by id
@@ -61,35 +61,35 @@ class User:
         is_valid = True
 
         if len(data['first_name']) < 2:
-            flash("First name must be at least 2 characters", "error_message_first_name")
+            flash("First name must be at least 2 characters", "register")
             is_valid = False
         
         if len(data['last_name']) < 2:
-            flash("Last name must be at least 2 characters", "error_message_last_name")
+            flash("Last name must be at least 2 characters", "register")
             is_valid = False
 
         if len(data['username']) < 5:
-            flash("Username must be at least 5 characters", "error_message_username")
+            flash("Username must be at least 5 characters", "register")
             is_valid = False
         
         if (User.get_one_by_username(data)):
-            flash('Username already taken', 'error_message_username')
+            flash('Username already taken', 'register')
             is_valid = False
 
         if not EMAIL_REGEX.match(data['email']):
-            flash("Invalid email!","error_message_email")
+            flash("Invalid email!","register")
             is_valid = False
         
         if (User.get_one_by_email(data)):
-            flash("Email already in use!","error_message_email")
+            flash("Email already in use!","register")
             is_valid = False
         
         if len(data['password']) < 8:
-            flash('Password must be at least 8 characters', "error_message_password")
+            flash('Password must be at least 8 characters', "register")
             is_valid = False
         
         if data['confirm_password'] != data['password']:
-            flash('Passwords do not match!', "error_message_confirm_password")
+            flash('Passwords do not match!', "register")
             is_valid = False
 
         return is_valid
@@ -98,14 +98,15 @@ class User:
     @staticmethod
     def validate_login(data):
         is_valid = True
-        print(data['username'])
         found_user = User.get_one_by_username(data)
         if found_user:
             if not bcrypt.check_password_hash(found_user.password, data['password']):
                 is_valid = False
         else:
             is_valid = False
+            
 
         if not is_valid:
-            flash("Invalid Login.")
+            flash("Invalid Login.", 'login')
+        return is_valid
 
