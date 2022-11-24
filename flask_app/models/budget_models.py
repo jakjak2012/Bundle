@@ -152,3 +152,18 @@ class Budget:
       is_valid = False
     
     return is_valid
+  
+
+  @staticmethod
+  def validate_budget_update(data):
+    is_valid = True
+
+    if len(data['budget_amt']) < 1:
+      flash('Enter Budget Amount', 'budget')
+      is_valid = False
+
+    if data['budget_cat'] == 'null':
+      flash('Please Select Category', 'budget')
+      is_valid = False
+    
+    return is_valid
