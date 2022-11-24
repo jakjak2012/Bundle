@@ -42,3 +42,21 @@ def update():
   }
   user = User.get_one_by_id(data)
   return render_template('update.html', user = user)
+
+@app.route('/update_budget', methods = ['POST'])
+def update_budget():
+  if 'uid' not in session:
+    return redirect('/')
+  
+  data = {
+  **request.form,
+  'user_id': session['uid']
+  }
+
+  if not Budget.validate_budget(data):
+    return redirect(request.referrer)
+
+  Budget.update_budget(data)
+  return redirect('/dashboard')
+
+

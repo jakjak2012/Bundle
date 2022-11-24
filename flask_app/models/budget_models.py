@@ -44,6 +44,12 @@ class Budget:
     query = 'INSERT INTO budget(budget_amt, budget_cat, created_at, updated_at, user_id) VALUES (%(budget_amt)s, %(budget_cat)s, NOW(), NOW(), %(user_id)s)'
     results = connectToMySQL('Bundle').query_db(query, data)
     return results
+  
+  # update a budget based of category
+  @classmethod
+  def update_budget(cls, data):
+    query = 'UPDATE budget SET budget_amt = %(budget_amt)s, updated_at = NOW() WHERE user_id = %(user_id)s AND budget_cat = %(budget_cat)s;'
+    return connectToMySQL('Bundle').query_db(query, data)
 
 #getting budgets by the specific categories 
   @classmethod

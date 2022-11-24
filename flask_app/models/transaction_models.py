@@ -34,7 +34,15 @@ class Transaction:
       transactions.append(transaction)
     return transactions
       
-      
+  # getting one transaction from the database from a specific user
+  @classmethod
+  def get_one_transaction(cls, data):
+    query = 'SELECT * FROM transactions WHERE user_id = %(user_id)s AND id = %(id)s;'
+    result = connectToMySQL('Bundle').query_db(query,data)
+    if len(result) < 1:
+      return False
+    return cls(result[0])
+
   # Insert transactions to DB
   @classmethod
   def insert_transaction(cls, data):
@@ -42,7 +50,11 @@ class Transaction:
     results = connectToMySQL('Bundle').query_db(query, data)
     return results
   
-  
+  #updates a specific transaction based on a specific user
+  @classmethod
+  def update_transaction(cls, data):
+    query = 'UPDATE transactions SET amount = %(amount)s, updated_at = NOW() WHERE user_id = %(user_id)s AND id = %(id)s;'
+    return connectToMySQL('Bundle').query_db(query, data)
   
   # Deleting Specific transactions from the DB
   @classmethod
