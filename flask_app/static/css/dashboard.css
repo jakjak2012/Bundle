@@ -14,6 +14,14 @@ body {
     background-color:#0e2a47;
 }
 
+a {
+    color:#2a9d8f;
+    text-decoration: none;
+}
+a:hover {
+    color:white;
+}
+
 nav > h1 {
     font-family: 'Racing Sans One';
     font-size: 3em;
@@ -32,13 +40,13 @@ nav {
     top:0;
 }
 
-a{
+nav a{
     color:#2a9d8f;
     text-decoration: none;
     font-size: 1.5em;
 }
 
-a:hover{
+nav a:hover{
     color:white;
 }
 
