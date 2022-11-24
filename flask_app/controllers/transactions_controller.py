@@ -38,10 +38,9 @@ def dashboard():
   if rem_budget == 0 and trans == 0:
     total_Budget = rem_budget - trans
   
-  # an if statement if needed for displaying messages to the user??
 
-  table_data = {
     #data for the various budgets the user creates
+  table_data = {
     'transportation_budget': Budget.get_budget_by_Transportation(data),
     'groceries_budget': Budget.get_budget_by_Groceries(data),
     'clothing_budget': Budget.get_budget_by_Clothing(data),
@@ -54,7 +53,22 @@ def dashboard():
     'miscellaneous_budget': Budget.get_budget_by_Miscellaneous(data),
   }
   
-  return render_template('dashboard.html', user = user, transactions = transactions, budget = budget, total_Budget = total_Budget, table_data = table_data)
+  
+  # Spent data for user spending inputs
+  spent_data = {
+    'transportation_spent' : Transaction.get_spent_by_transportaion(data),
+    'groceries_spent' : Transaction.get_spent_by_groceries(data),
+    'clothing_spent' : Transaction.get_spent_by_clothing(data),
+    'doctor_spent' : Transaction.get_spent_by_doctor(data),
+    'cosmetics_spent' : Transaction.get_spent_by_cosmetics(data),
+    'housing_spent' : Transaction.get_spent_by_housing(data),
+    'internet_spent' : Transaction.get_spent_by_internet(data),
+    'phone_spent' : Transaction.get_spent_by_phone(data),
+    'subscriptions_spent' : Transaction.get_spent_by_subscriptions(data),
+    'miscellaneous_spent': Transaction.get_spent_by_miscellaneous(data)
+  }
+  
+  return render_template('dashboard.html', user = user, transactions = transactions, budget = budget, total_Budget = total_Budget, table_data = table_data, spent_data = spent_data)
 
 
 
