@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transactions</title>
+</head>
+<body>
+
+<nav>
+  <h1>Bundle</h1>
+  <div class="links">
+    <a href="/dashboard">Dashboard</a>
+    <a href="/input">Add Info</a>
+    <a href="/transactions">Transactions</a>
+    <a href="/update">Update</a>
+  </div>
+  <div class="user">
+    <h2>{{ user.username }}</h2>
+    <a href="/logout">Logout</a>
+  </div>
+</nav>
+
+<h2>All Transactions</h2>
+  <table>
+    <!-- Add jinja to create all transactions -->
+    <thead>
+      <tr>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Comment</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>amount</td>
+        <td>category</td>
+        <td>date</td>
+        <td>comment</td>
+        <td>
+          <a href="">Delete</a>
+          <a href="">Edit</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

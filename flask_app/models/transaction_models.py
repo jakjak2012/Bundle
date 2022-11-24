@@ -115,8 +115,8 @@ class Transaction:
       query = "SELECT amount from transactions JOIN users on users.id = user_id WHERE users.id = %(id)s AND category = 'phone';"
       results = connectToMySQL('Bundle').query_db(query, data)
       if len(results) < 1:
-          return False
-      return results[0]
+          return 0
+      return results[0]['amount']
     
   
   @classmethod
@@ -124,8 +124,8 @@ class Transaction:
       query = "SELECT amount from transactions JOIN users on users.id = user_id WHERE users.id = %(id)s AND category = 'groceries';"
       results = connectToMySQL('Bundle').query_db(query, data)
       if len(results) < 1:
-          return False
-      return results[0]
+          return 0
+      return results[0]['amount']
     
     
   @classmethod
@@ -133,8 +133,8 @@ class Transaction:
       query = "SELECT amount from transactions JOIN users on users.id = user_id WHERE users.id = %(id)s AND category = 'clothing';"
       results = connectToMySQL('Bundle').query_db(query, data)
       if len(results) < 1:
-          return False
-      return results[0]
+          return 0
+      return results[0]['amount']
     
     
   @classmethod
@@ -142,8 +142,8 @@ class Transaction:
       query = "SELECT amount from transactions JOIN users on users.id = user_id WHERE users.id = %(id)s AND category = 'doctor';"
       results = connectToMySQL('Bundle').query_db(query, data)
       if len(results) < 1:
-          return False
-      return results[0]
+          return 0
+      return results[0]['amount']
     
     
   @classmethod
@@ -151,8 +151,8 @@ class Transaction:
       query = "SELECT amount from transactions JOIN users on users.id = user_id WHERE users.id = %(id)s AND category = 'cosmetics';"
       results = connectToMySQL('Bundle').query_db(query, data)
       if len(results) < 1:
-          return False
-      return results[0]
+          return 0
+      return results[0]['amount']
     
     
   @classmethod
@@ -160,8 +160,8 @@ class Transaction:
       query = "SELECT amount from transactions JOIN users on users.id = user_id WHERE users.id = %(id)s AND category = 'housing';"
       results = connectToMySQL('Bundle').query_db(query, data)
       if len(results) < 1:
-          return False
-      return results[0]
+          return 0
+      return results[0]['amount']
     
     
     
@@ -170,8 +170,8 @@ class Transaction:
       query = "SELECT amount from transactions JOIN users on users.id = user_id WHERE users.id = %(id)s AND category = 'internet';"
       results = connectToMySQL('Bundle').query_db(query, data)
       if len(results) < 1:
-          return False
-      return results[0]
+          return 0
+      return results[0]['amount']
     
     
     
@@ -180,8 +180,8 @@ class Transaction:
       query = "SELECT amount from transactions JOIN users on users.id = user_id WHERE users.id = %(id)s AND category = 'phone';"
       results = connectToMySQL('Bundle').query_db(query, data)
       if len(results) < 1:
-          return False
-      return results[0]
+          return 0
+      return results[0]['amount']
     
     
   @classmethod
@@ -189,8 +189,8 @@ class Transaction:
       query = "SELECT amount from transactions JOIN users on users.id = user_id WHERE users.id = %(id)s AND category = 'subscriptions';"
       results = connectToMySQL('Bundle').query_db(query, data)
       if len(results) < 1:
-          return False
-      return results[0]
+          return 0
+      return results[0]['amount']
     
     
     
@@ -199,8 +199,8 @@ class Transaction:
       query = "SELECT amount from transactions JOIN users on users.id = user_id WHERE users.id = %(id)s AND category = 'miscellaneous';"
       results = connectToMySQL('Bundle').query_db(query, data)
       if len(results) < 1:
-          return False
-      return results[0]
+          return 0
+      return results[0]['amount']
       
       
       
