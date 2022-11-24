@@ -15,10 +15,12 @@
       <h1>Bundle</h1>
       <div class="links">
           <a href="/dashboard">Dashboard</a>
-          <a href="/input">Transactions</a>
+          <a href="/input">Add Info</a>
+          <a href="/transactions">Transactions</a>
+          <a href="/update">Update</a>
       </div>
       <div class="user">
-          <h2>username</h2>
+          <h2>{{ user.username }}</h2>
           <a href="/logout">Logout</a>
       </div>
   </nav>
@@ -49,53 +51,53 @@
       <tbody>
         <tr>
           <td>Transportation</td>
-          <td>{{ table_data.transportation_budget['budget_amt'] }}</td>
-          <td>{{ spent_data.transportation_spent['amount']}}</td>
+          <td>{{ table_data.transportation_budget }}</td>
+          <td>{{ spent_data.transportation_spent }}</td>
         </tr>
         <tr>
           <td>Groceries</td>
-          <td>{{ table_data.groceries_budget['budget_amt'] }}</td>
-          <td>{{ spent_data.groceries_spent['amount'] }}</td>
+          <td>{{ table_data.groceries_budget }}</td>
+          <td>{{ spent_data.groceries_spent }}</td>
         </tr>
         <tr>
           <td>Clothing</td>
-          <td>{{ table_data.clothing_budget['budget_amt'] }}</td>
-          <td>{{ spent_data.clothing_spent['amount'] }}</td>
+          <td>{{ table_data.clothing_budget }}</td>
+          <td>{{ spent_data.clothing_spent }}</td>
         </tr>
         <tr>
           <td>Doctor</td>
-          <td>{{ table_data.doctor_budget['budget_amt'] }}</td>
-          <td>{{ spent_data.doctor_spent['amount'] }}</td>
+          <td>{{ table_data.doctor_budget }}</td>
+          <td>{{ spent_data.doctor_spent }}</td>
         </tr>
         <tr>
           <td>Cosmetics</td>
-          <td>{{ table_data.cosmetics_budget['budget_amt'] }}</td>
-          <td>{{ spent_data.cosmetics_spent['amount'] }}</td>
+          <td>{{ table_data.cosmetics_budget }}</td>
+          <td>{{ spent_data.cosmetics_spent }}</td>
         </tr>
         <tr>
           <td>Housing</td>
-          <td>{{ table_data.housing_budget['budget_amt'] }}</td>
-          <td>{{ spent_data.housing_spent['amount'] }}</td>
+          <td>{{ table_data.housing_budget }}</td>
+          <td>{{ spent_data.housing_spent }}</td>
         </tr>
         <tr>
           <td>Internet</td>
-          <td>{{ table_data.internet_budget['budget_amt'] }}</td>
-          <td>{{ spent_data.internet_spent['amount'] }}</td>
+          <td>{{ table_data.internet_budget }}</td>
+          <td>{{ spent_data.internet_spent }}</td>
         </tr>
         <tr>
           <td>Phone</td>
-          <td>{{ table_data.phone_budget['budget_amt'] }}</td>
-          <td>{{ spent_data.phone_spent['amount'] }}</td>
+          <td>{{ table_data.phone_budget }}</td>
+          <td>{{ spent_data.phone_spent }}</td>
         </tr>
         <tr>
           <td>Subscriptions</td>
-          <td>{{ table_data.subscriptions_budget['budget_amt'] }}</td>
-          <td>{{ spent_data.subscriptions_spent['amount'] }}</td>
+          <td>{{ table_data.subscriptions_budget }}</td>
+          <td>{{ spent_data.subscriptions_spent }}</td>
         </tr>
         <tr>
           <td>Miscellaneous</td>
-          <td>{{ table_data.miscellaneous_budget['budget_amt'] }}</td>
-          <td>{{ spent_data.miscellaneous_spent['amount'] }}</td>
+          <td>{{ table_data.miscellaneous_budget }}</td>
+          <td>{{ spent_data.miscellaneous_spent }}</td>
         </tr>
       </tbody>
     </table>

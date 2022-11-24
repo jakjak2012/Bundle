@@ -9,7 +9,11 @@ from flask_app.models.user_models import User
 def input_page():
   if 'uid' not in session:
     return redirect('/')
-  return render_template('input.html')
+  data = {
+    'id': session['uid']
+  }
+  user = User.get_one_by_id(data)
+  return render_template('input.html', user = user)
 
 #allows users to add budgets to the database
 @app.route('/insert_budget', methods = ['POST'])
@@ -17,13 +21,24 @@ def insert_budget():
   if 'uid' not in session:
     return redirect('/')
   
-  if not Budget.validate_budget(request.form):
+  data = {
+  **request.form,
+  'user_id': session['uid']
+  }
+
+  if not Budget.validate_budget(data):
     return redirect(request.referrer)
 
-  data = {
-    **request.form,
-    'user_id': session['uid']
-  }
   Budget.insert_budget(data)
   return redirect('/input')
 
+# updates the budgets table
+@app.route('/update')
+def update():
+  if 'uid'not in session:
+    return redirect('/')
+  data = {
+    'id': session['uid']
+  }
+  user = User.get_one_by_id(data)
+  return render_template('update.html', user = user)

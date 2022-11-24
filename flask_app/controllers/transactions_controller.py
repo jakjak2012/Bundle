@@ -38,7 +38,7 @@ def dashboard():
   if rem_budget == 0 and trans == 0:
     total_Budget = rem_budget - trans
   
-
+  
     #data for the various budgets the user creates
   table_data = {
     'transportation_budget': Budget.get_budget_by_Transportation(data),
