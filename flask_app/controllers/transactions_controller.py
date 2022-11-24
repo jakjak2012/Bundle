@@ -71,6 +71,18 @@ def dashboard():
   return render_template('dashboard.html', user = user, transactions = transactions, budget = budget, total_Budget = total_Budget, table_data = table_data, spent_data = spent_data)
 
 
+@app.route('/transactions')
+def all_transactions():
+  if 'uid' not in session:
+    return redirect('/')
+
+  data = {
+    'id': session['uid']
+  }
+  user = User.get_one_by_id(data)
+  transactions = Transaction.get_transaction(data)
+  return render_template('transactions.html', user = user, transactions = transactions)
+
 # renders the update transaction page for one transaction
 @app.route('/transaction/<int:num>')
 def edit_transaction_page(num):
@@ -81,8 +93,9 @@ def edit_transaction_page(num):
     'user_id': session['uid'],
     'id': num
   }
+  user = User.get_one_by_id(data)
   single_transaction = Transaction.get_one_transaction(data)
-  return render_template('tr_update', single_transaction = single_transaction)
+  return render_template('tr_update.html', user = user, single_transaction = single_transaction)
 
 #insert transaction data into database
 @app.route('/insert_transaction', methods = ['POST'])

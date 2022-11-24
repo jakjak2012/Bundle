@@ -53,7 +53,7 @@ def update_budget():
   'user_id': session['uid']
   }
 
-  if not Budget.validate_budget(data):
+  if not Budget.validate_budget_update(data):
     return redirect(request.referrer)
 
   Budget.update_budget(data)
