@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Roboto:wght@300&family=Urbanist:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/input.css">
-    <title>Add Info | Bundle</title>
+    <title>Edit Transaction | Bundle</title>
 </head>
-    
 <body>
+
     <nav>
         <h1>Bundle</h1>
         <div class="links">
@@ -23,42 +23,10 @@
             <a href="/logout">Logout</a>
         </div>
     </nav>
-    <!-- should submit all form data into "insert transaction" route and run function in route -->
-
+    
     <div class="container">
-        <form action="/insert_budget" method="POST">
-            <h1>Add Budgeted Amount</h1>
-            <label for="budget_amt">Amount:</label>
-            <input type="number" id="budget_amt" name="budget_amt">
-            
-            <label for="budget_cat">Category:</label>
-                <select name="budget_cat" id="budget_cat">
-                    <option value="null" hidden>Select A Category</option>
-                    <option value="transportation">Transportation</option>
-                    <option value="groceries">Groceries</option>
-                    <option value="clothing">Clothing</option>
-                    <option value="doctor">Doctor</option>
-                    <option value="cosmetics">Cosmetics</option>
-                    <option value="housing">Housing</option>
-                    <option value="internet">Internet</option>
-                    <option value="phone">Phone</option>
-                    <option value="subscriptions">Subscriptions</option>
-                    <option value="miscellaneous">Miscellaneous</option>
-                </select>
-
-            <!-- <input type="submit" name="add" id="add" value="Add Transaction"> -->
-            <button type="submit">Add Budget</button>
-            {% with messages = get_flashed_messages(category_filter = 'budget') %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <p style="color:red">{{message}}</p>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-        </form>
-
-        <form action="/insert_transaction" method="POST">
-            <h1>Add a New Transaction</h1>
+        <form action="" method="POST">
+            <h1>Edit Transaction</h1>
             <label for="amount">Amount:</label>
             <input type="number" id="amount" name="amount">
             
@@ -83,7 +51,7 @@
             <label for="date">Date:</label>
             <input type="date" name="date">
 
-            <button type="submit">Add Transaction</button>
+            <button type="submit">Update</button>
             {% with messages = get_flashed_messages(category_filter = 'transaction') %}
                 {% if messages %}
                     {% for message in messages %}
@@ -95,5 +63,4 @@
     </div>
 
 </body>
-
 </html>
