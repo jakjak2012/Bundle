@@ -49,53 +49,53 @@
       <tbody>
         <tr>
           <td>Transportation</td>
-          <td>{{ table_data.transportation_budget }}</td>
-          <td>spent</td>
+          <td>{{ table_data.transportation_budget['budget_amt'] }}</td>
+          <td>{{ spent_data.transportation_spent['amount']}}</td>
         </tr>
         <tr>
           <td>Groceries</td>
           <td>{{ table_data.groceries_budget['budget_amt'] }}</td>
-          <td>spent</td>
+          <td>{{ spent_data.groceries_spent['amount'] }}</td>
         </tr>
         <tr>
           <td>Clothing</td>
-          <td>budgetted</td>
-          <td>spent</td>
+          <td>{{ table_data.clothing_budget['budget_amt'] }}</td>
+          <td>{{ spent_data.clothing_spent['amount'] }}</td>
         </tr>
         <tr>
           <td>Doctor</td>
-          <td>budgetted</td>
-          <td>spent</td>
+          <td>{{ table_data.doctor_budget['budget_amt'] }}</td>
+          <td>{{ spent_data.doctor_spent['amount'] }}</td>
         </tr>
         <tr>
           <td>Cosmetics</td>
-          <td>budgetted</td>
-          <td>spent</td>
+          <td>{{ table_data.cosmetics_budget['budget_amt'] }}</td>
+          <td>{{ spent_data.cosmetics_spent['amount'] }}</td>
         </tr>
         <tr>
           <td>Housing</td>
-          <td>budgetted</td>
-          <td>spent</td>
+          <td>{{ table_data.housing_budget['budget_amt'] }}</td>
+          <td>{{ spent_data.housing_spent['amount'] }}</td>
         </tr>
         <tr>
           <td>Internet</td>
-          <td>budgetted</td>
-          <td>spent</td>
+          <td>{{ table_data.internet_budget['budget_amt'] }}</td>
+          <td>{{ spent_data.internet_spent['amount'] }}</td>
         </tr>
         <tr>
           <td>Phone</td>
-          <td>budgetted</td>
-          <td>spent</td>
+          <td>{{ table_data.phone_budget['budget_amt'] }}</td>
+          <td>{{ spent_data.phone_spent['amount'] }}</td>
         </tr>
         <tr>
           <td>Subscriptions</td>
-          <td>budgetted</td>
-          <td>spent</td>
+          <td>{{ table_data.subscriptions_budget['budget_amt'] }}</td>
+          <td>{{ spent_data.subscriptions_spent['amount'] }}</td>
         </tr>
         <tr>
           <td>Miscellaneous</td>
-          <td>budgetted</td>
-          <td>spent</td>
+          <td>{{ table_data.miscellaneous_budget['budget_amt'] }}</td>
+          <td>{{ spent_data.miscellaneous_spent['amount'] }}</td>
         </tr>
       </tbody>
     </table>
