@@ -12,6 +12,7 @@ body {
     color:white;
     font-size: large;
     background-color:#0e2a47;
+    background-image: linear-gradient(to bottom right, #0e2a47, #111);
 }
 
 nav > h1 {
