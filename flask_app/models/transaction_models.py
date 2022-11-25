@@ -226,6 +226,10 @@ class Transaction:
       flash('Enter Transaction Amount', 'transaction')
       is_valid = False
 
+    if int(data['amount']) < 0:
+      flash('Invalid Transaction Amount', 'transaction')
+      is_valid = False
+
     if data['category'] == 'null':
       flash('Please Select A Category', 'transaction')
       is_valid = False

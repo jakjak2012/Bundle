@@ -17,7 +17,7 @@ class Budget:
 
   @classmethod
   def display_budget(cls, data):
-    query = 'SELECT budget_amt FROM budget WHERE user_id = %(id)s'
+    query = 'SELECT SUM(budget_amt) as total_budget FROM budget WHERE user_id = %(id)s;'
     results = connectToMySQL('Bundle').query_db(query, data)
     if len(results) < 1:
       return False
@@ -140,6 +140,10 @@ class Budget:
       flash('Enter Budget Amount', 'budget')
       is_valid = False
 
+    if int(data['budget_amt']) < 0:
+      flash('Invalid Budget Amount', 'budget')
+      is_valid = False
+
     query = 'SELECT * FROM budget WHERE user_id = %(user_id)s AND budget_cat = %(budget_cat)s;'
     results = connectToMySQL('Bundle').query_db(query, data)
     print(results)
@@ -160,6 +164,10 @@ class Budget:
 
     if len(data['budget_amt']) < 1:
       flash('Enter Budget Amount', 'budget')
+      is_valid = False
+
+    if int(data['budget_amt']) < 0:
+      flash('Invalid Budget Amount', 'budget')
       is_valid = False
 
     if data['budget_cat'] == 'null':
