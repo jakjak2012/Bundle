@@ -86,3 +86,15 @@ th{
 tbody tr:nth-child(even) {
     background-color: #0c223a;
 }
+
+::-webkit-scrollbar {
+    width:25px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #2a9d8f;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #2b2d42;
+}
